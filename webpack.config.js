@@ -12,6 +12,7 @@ const isProduction = (process.env.ENV === 'production');
 const envVars = _.mapValues(_.pick(process.env, varNames), v => JSON.stringify(v));
 
 let config = {
+	mode: process.env.ENV || 'development',
 	entry: './app/scripts/main',
 	output: {
 		path: __dirname,
@@ -19,7 +20,7 @@ let config = {
 	},
 	devtool: isProduction ? 'source-map' : 'inline-source-map',
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
@@ -45,7 +46,10 @@ let config = {
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.ENV || 'development')
 		})
-	]
+	],
+	resolve: {
+		extensions: ['.js', '.jsx']
+	}
 };
 
 if (isProduction) {

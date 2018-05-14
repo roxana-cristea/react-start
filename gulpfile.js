@@ -30,7 +30,7 @@ const autoprefixerBrowsers = [
 
 const processScripts = function () {
 	return gulp.src('./app/scripts/main.js')
-		.pipe(webpack(webpackConfig))
+		.pipe(webpack(webpackConfig, require('webpack')))
 		.pipe(gulp.dest(dist + 'js/'))
 		.pipe($.size({ title: 'js' }))
 		.pipe($.connect.reload());
