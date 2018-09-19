@@ -3,7 +3,6 @@
 const del = require('del');
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
-const spawn = require('child_process').spawn;
 const webpack = require('webpack-stream');
 
 const webpackConfig = require('./webpack.config.js');

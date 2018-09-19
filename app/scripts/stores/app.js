@@ -2,7 +2,9 @@ import moment from 'moment';
 
 import constants from '../helpers/constants';
 
-export default function dispatcherReducer(state = { lastAction: null }, action) {
+export const initialState = { lastAction: null };
+
+export default function dispatcherReducer(state = initialState, action) {
 
 	if (process.env.ENV === constants.ENV.DEVELOPMENT) {
 		console.info(action.type);
